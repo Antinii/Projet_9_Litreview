@@ -25,12 +25,12 @@ env/Scripts/activate pour Windows
 ```
 pip install -r requirements.txt
 ```
-NB : Puisque la base de données contenant du contenu visant à démontrer la fonctionnalité de l'application est incluse dans le répo.
-Il n'est pas nécessaire de procéder aux migrations, mais si vous souhaitez recréer la BDD de zéro, supprimer le fichier db.sqlite3 et procédez aux migrations, à l'aide de la commande suivante :
+NB : Puisque la base de données contenant du contenu visant à démontrer la fonctionnalité de l'application est incluse dans le repository.
+Il n'est pas nécessaire de procéder aux migrations, mais si vous souhaitez recréer la BDD de zéro, supprimez le fichier db.sqlite3 et procédez aux migrations, à l'aide de la commande suivante :
 ```		
 python manage.py migrate
 ```
-4. Vous pouvez maintenant exécuter l'application en local. Il vous suffit de lancer le serveur à l'aide de la commande suivante :
+4. Vous pouvez maintenant exécuter l'application en local à l'aide de la commande suivante :
 ```		
 python manage.py runserver
 ```
