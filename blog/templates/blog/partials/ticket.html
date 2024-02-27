@@ -1,0 +1,29 @@
+{% load feed_extras %}
+
+<div class="card mb-4 ">
+
+    <h5 class="card-header">Ticket de {% get_poster_display ticket.user %}</h5>
+
+    <div class="card-body">
+
+        <div class="d-flex justify-content-end small font-italic text-muted mb-2">  
+            <p>{{ ticket.time_created|get_posted_at_display }}</p>
+        </div>
+
+        <p><strong>Titre :</strong> {{ ticket.title }}</p>
+        <p>{{ ticket.description }}</p>
+        {% if ticket.image %}
+            <img src={{ ticket.image.url }} class="img-fluid" alt="illustration pour {{ ticket.title }}"></br>
+        {% endif %}        
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        {% if ticket.user == request.user %}
+            <p><a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-success">Modifier le Ticket</a></p>
+        {% endif %}
+        {% if ticket.review_count == 0 %}
+            <p><a href="{% url 'create_review' ticket.id %}" class="btn btn-primary ticket_button">Créer une critique</a></p>
+        {% endif %}
+        </div>
+    </div>
+</div>
+                             

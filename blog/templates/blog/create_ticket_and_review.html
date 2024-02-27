@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h2 class="text-center">Créer une critique</h2>
+    <div class="container text-left">    
+        <div class="row justify-content-center">
+            <div class="col-sm-9 p-3 justify-content-center">
+                <form method="post" enctype="multipart/form-data">
+                    <h3 class="my-4">Livre / Article</h3>
+                    {{ ticket_form|crispy }}
+                    <hr>
+                    <h3 class="my-4">Critique</h3>
+                    {{ review_form|crispy }}
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'home' %}" class="btn btn-light">Retour</a>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

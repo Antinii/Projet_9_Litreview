@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load feed_extras %}
+
+{% block content %}
+<div class="d-grid gap-5 d-md-flex justify-content-md-center p-3">
+    <a href="{% url 'create_ticket' %}" class="btn btn-light">Demander une critique</a>
+    <a href="{% url 'create_ticket_and_review' %}" class="btn btn-light">Créer une critique</a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-sm-6 p-3 justify-content-center">
+        {% for post in page_obj %}
+
+            {% if post|classname == 'Ticket' %}
+                {% include 'blog/partials/ticket.html' with ticket=post %}
+
+            {% elif post|classname == 'Review' %}
+                {% include 'blog/partials/review.html' with review=post %}
+                
+            {% endif %}
+
+        {% empty %}
+            <p>Il n'y a aucun post pour l'instant.</p>
+
+        {% endfor %}
+    </div>
+</div>
+<div class="text-center mb-5">
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-outline-primary">« première</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-primary">précédente</a>
+        {% endif %}
+
+        <span>
+            Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}
+
+        </span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-primary">suivante</a>
+            
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-primary">dernière »</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content %}

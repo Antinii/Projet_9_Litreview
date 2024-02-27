@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h3 class="text-center p-3"> Vous êtes en train de poster en réponse à:</h3>
+<div class="row justify-content-center">
+    <div class="col-sm-6 p-3 justify-content-center">
+        {% include 'blog/partials/embeded_ticket.html' with ticket=ticket %}
+    </div>
+</div>
+
+
+<h3 class="text-center">Écrire une critique</h3>
+<div class="container text-left">    
+    <div class="row justify-content-center">
+        <div class="col-sm-9 p-3 justify-content-center">
+            <form method="post" enctype="multipart/form-data">
+                {{ review_form|crispy }}   
+                {% csrf_token %}          
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{% url 'home' %}" class="btn btn-light">Retour</a>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

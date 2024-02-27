@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load feed_extras %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <h3 class="text-center p-3">Vos posts</h3>
+    <div class="col-sm-6 p-3 justify-content-center">
+        {% for post in page_obj %}
+
+            {% if post|classname == 'Ticket' %}
+                {% include 'blog/partials/ticket.html' with ticket=post %}
+
+            {% elif post|classname == 'Review' %}
+                {% include 'blog/partials/review.html' with review=post %}
+                
+            {% endif %}
+
+        {% empty %}
+            <p>Vous n'avez pas encore de post.</p>
+
+        {% endfor %}
+    </div>
+</div>
+<div class="text-center mb-5">
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="btn btn-outline-primary">« première</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-primary">précédente</a>
+        {% endif %}
+
+        <span>
+            Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}
+
+        </span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-primary">suivante</a>
+            
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-primary">dernière »</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content%}

@@ -1,0 +1,16 @@
+{% load feed_extras %}
+
+<div class="card text-center my-3 ">
+    <div class="card-header">
+        Ticket de {{ ticket.user }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ ticket.title }}</h5>
+        <p class="card-text">{{ ticket.description }}</p>
+        {% if ticket.image %}
+        <div class="text-center">
+            <img src={{ ticket.image.url }} alt="illustration pour {{ ticket.title }}">
+        </div>
+        {% endif %}
+    </div>
+</div>

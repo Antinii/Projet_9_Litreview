@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h2 class="text-center p-3">Modifier le ticket</h2>
+    <div class="container text-left">    
+        <div class="row justify-content-center">
+            <div class="col-sm-9 p-3 justify-content-center">
+                <form method="post" enctype="multipart/form-data">
+                    {{ edit_form|crispy }}
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'home' %}" class="btn btn-light">Retour</a>
+                        <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                    </div>
+                </form>
+                <hr>
+                <h3 class="p-3">Supprimer le ticket ?</h3>
+                <form method="post">
+                    {{ delete_form }}
+                    {% csrf_token %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center p-3">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
