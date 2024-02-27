@@ -8,7 +8,7 @@ Son objectif est de commercialiser un produit permettant à une communauté d'ut
 
 ## Mise en place et exécution en local de l'application
 
-1. Téléchargez le projet depuis Github. Soit directement (format zip), soit en clonant le projet en utilisant la commande suivante dans Git Bash :  
+1. Téléchargez le projet depuis Github en clonant le projet en utilisant la commande suivante:  
 ```
 git clone https://github.com/Antinii/Projet_9_Litreview.git
 ```
@@ -30,7 +30,7 @@ Il n'est pas nécessaire de procéder aux migrations, mais si vous souhaitez rec
 ```		
 python manage.py migrate
 ```
-4. Vous pouvez maintenant exécuter l'application en local. Il vous suffit de lancer le serveur local, à l'aide de la commande suivante :
+4. Vous pouvez maintenant exécuter l'application en local. Il vous suffit de lancer le serveur à l'aide de la commande suivante :
 ```		
 python manage.py runserver
 ```
@@ -40,7 +40,7 @@ http://127.0.0.1:8000/
 ```
 6. Dans la base de donnée communiquée, 4 comptes de démonstrations ont été créés avec quelques publications. Les noms d'utilisateurs sont les suivants :
 ```		
-antini
+antini (superuser)
 ```
 ```		
 Marc
