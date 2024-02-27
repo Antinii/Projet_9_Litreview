@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container text-left">    
+    <div class="row justify-content-center">
+        <div class="col-md-6 p-3">
+            <h2 class="text-center p-3">Inscrivez-vous</h2>
+            {% if form.errors %}
+                {{ form.errors }}
+            {% endif %}
+            <form method="post">
+                {{ form|crispy }}
+                {% csrf_token %}
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <a href="{% url 'login' %}" class="btn btn-outline-secondary">Retour</a>
+                    <button type="submit" class="btn btn-outline-primary">S’inscrire</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

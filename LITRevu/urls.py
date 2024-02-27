@@ -16,7 +16,38 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView
+from django.conf import settings
+from django.conf.urls.static import static
+
+import authentication.views
+import blog.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', LoginView.as_view(
+        template_name='authentication/login.html',
+        redirect_authenticated_user=True),
+        name='login'),
+    path('logout/', authentication.views.logout_user, name='logout'),
+    path('signup/', authentication.views.signup_page, name='signup'),
+    path('change-password/', PasswordChangeView.as_view(
+        template_name='authentication/password_change_form.html'),
+        name='password_change'),
+    path('change-password-done/', PasswordChangeDoneView.as_view(
+        template_name='authentication/password_change_done.html'),
+        name='password_change_done'),
+    path('home/', blog.views.home, name='home'),
+    path('blog/create_ticket/', blog.views.create_ticket, name='create_ticket'),
+    path('blog/<int:ticket_id>/edit_ticket', blog.views.edit_ticket, name='edit_ticket'),
+    path('create_review/<int:ticket_id>/', blog.views.create_review, name='create_review'),
+    path('blog/<int:review_id>/edit_review/', blog.views.edit_review, name="edit_review"),
+    path('blog/create_ticket_and_review/', blog.views.create_ticket_and_review, name='create_ticket_and_review'),
+    path('follow_user', blog.views.follow_user, name='follow_user'),
+    path('unfollow', blog.views.unfollow, name='unfollow'),
+    path('my_posts/', blog.views.my_posts, name="my_posts"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
