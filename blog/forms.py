@@ -8,7 +8,7 @@ User = get_user_model()
 
 class TicketForm(forms.ModelForm):
     """
-    Formulaire pour la création et la modification d'un ticket
+    Form used to create and edit a ticket
     """
 
     edit_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
@@ -21,7 +21,7 @@ class TicketForm(forms.ModelForm):
 
 class DeleteTicketForm(forms.Form):
     """
-    Formulaire pour la suppression d'un ticket
+    Form used to delete an existing ticket
     """
 
     delete_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
@@ -29,7 +29,7 @@ class DeleteTicketForm(forms.Form):
 
 class ReviewForm(forms.ModelForm):
     """
-    Formulaire pour la création et la modification d'une critique
+    Form used to create and edit a review
     """
 
     edit_review = forms.BooleanField(widget=forms.HiddenInput, initial=True)
@@ -48,7 +48,7 @@ class ReviewForm(forms.ModelForm):
 
 class DeleteReviewForm(forms.Form):
     """
-    Formulaire pour la suppression d'une critique
+    Form used to delete an existing review
     """
 
     delete_review = forms.BooleanField(widget=forms.HiddenInput, initial=True)
@@ -56,7 +56,7 @@ class DeleteReviewForm(forms.Form):
 
 class FollowUsersForm(forms.ModelForm):
     """
-    Formulaire pour l'abonnement à d'autres utilisateurs
+    Form used to follow another user
     """
 
     user = forms.ModelMultipleChoiceField(
@@ -67,7 +67,7 @@ class FollowUsersForm(forms.ModelForm):
 
 class SearchUserForm(forms.Form):
     """
-    Formulaire pour la recherche d'utilisateurs
+    Form used to be able to search for other users
     """
 
     username = forms.CharField(

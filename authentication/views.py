@@ -7,7 +7,7 @@ from . import forms
 
 def logout_user(request):
     """
-    Fonction gérant la deconnexion de l'utilisateur
+    Function logging out the user
     """
 
     logout(request)
@@ -16,7 +16,7 @@ def logout_user(request):
 
 def signup_page(request):
     """
-    Fonction gérant l'inscription au site
+    Function working on the signup 
     """
 
     form = forms.SignupForm()

@@ -15,6 +15,9 @@ def model_type(value):
 
 @register.filter
 def get_posted_at_display(posted_at):
+    """
+    Filter to change the way the time posted is showed 
+    """
     seconds_ago = (timezone.now() - posted_at).total_seconds()
     if seconds_ago <= HOUR:
         return f'Publié il y a {int(seconds_ago // MINUTE)} minutes.'
@@ -25,6 +28,9 @@ def get_posted_at_display(posted_at):
 
 @register.simple_tag(takes_context=True)
 def get_poster_display(context, user):
+    """
+    Filter to change the name of the user as 'vous' when logged as the user
+    """
     if user == context['user']:
         return 'vous'
     return user
@@ -33,14 +39,6 @@ def get_poster_display(context, user):
 @register.filter
 def classname(obj):
     """
-    Récupère le nom de la classe de l'objet.
+    Filter taking the name of the object class
     """
     return obj.__class__.__name__
-
-
-@register.filter
-def get_item(dictionary, key):
-    """
-    Récupère une valeur d'un dictionnaire en utilisant sa clé.
-    """
-    return dictionary.get(key)

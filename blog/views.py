@@ -11,7 +11,7 @@ from . import forms, models
 @login_required()
 def home(request):
     """
-    Fonction gérant le feed de l'app blog
+    Function working on the feed of the blog
     """
     user_follows = request.user.following
     following_users_ids = list(user_follows.values_list('followed_user', flat=True))
@@ -41,7 +41,7 @@ def home(request):
 @login_required()
 def create_ticket(request):
     """
-    Fonction gérant la création d'un ticket
+    Function creating a ticket
     """
     ticket_form = forms.TicketForm()
     if request.method == 'POST':
@@ -57,7 +57,7 @@ def create_ticket(request):
 @login_required
 def edit_ticket(request, ticket_id):
     """
-    Fonction gérant la modification d'un ticket déjà posté
+    Function editing a ticket
     """
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     edit_form = forms.TicketForm(instance=ticket)
@@ -84,7 +84,7 @@ def edit_ticket(request, ticket_id):
 @login_required()
 def create_review(request, ticket_id):
     """
-    Fonction gérant la création d'une critique en réponse à un ticket
+    Function creating a review for an existing ticket
     """
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     review_form = forms.ReviewForm()
@@ -108,7 +108,7 @@ def create_review(request, ticket_id):
 @login_required
 def edit_review(request, review_id):
     """
-    Fonction gérant la modification d'une critique déjà postée
+    Function editing an existing review
     """
     review = get_object_or_404(models.Review, id=review_id)
     edit_form = forms.ReviewForm(instance=review)
@@ -136,7 +136,7 @@ def edit_review(request, review_id):
 @login_required()
 def create_ticket_and_review(request):
     """
-    Fonction gérant la création simultanée d'un ticket et d'une critique.
+    Function creating a ticket and a review at the same time
     """
     ticket_form = forms.TicketForm()
     review_form = forms.ReviewForm()
@@ -163,7 +163,7 @@ def create_ticket_and_review(request):
 @login_required
 def follow_user(request):
     """
-    Fonction gérant la relation de suivi entre deux utilisateurs
+    Function to be able to follow an user 
     """
     user = request.user
     following = request.user.following.all()
@@ -195,7 +195,7 @@ def follow_user(request):
 @login_required
 def unfollow(request):
     """
-    Fonction gérant la relation de se désabonner d'un utilisateur
+    Function unfollowing an user
     """
 
     user_id = request.POST.get('user_id')
@@ -211,7 +211,7 @@ def unfollow(request):
 @login_required
 def my_posts(request):
     """
-    Fonction gérant l'affichage des posts uniquement de l'utilisateur courant
+    Function showing only the post of the logged user
     """
 
     tickets = models.Ticket.objects.filter(user=request.user).annotate(review_count=Count('review'))

@@ -139,14 +139,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'authentication.User'
 
-# Url pour la vue de connexion
 LOGIN_URL = 'login'
 
-# Url de redirection après connexion établie
 LOGIN_REDIRECT_URL = 'home'
 
-# Url des médias téléversés par les utilisateurs
 MEDIA_URL = 'media/'
 
-# Chemin d'accès au répertoire des fichiers médias
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
