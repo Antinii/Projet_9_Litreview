@@ -12,7 +12,11 @@ Son objectif est de commercialiser un produit permettant à une communauté d'ut
 ```
 git clone https://github.com/Antinii/Projet_9_Litreview.git
 ```
-2. Créez un environnement virtuel Python en exécutant la commande suivante:
+2. Déplacez vous dans le répertoire du projet avec la commande:
+```
+cd Projet_9_Litreview
+```
+3. Créez un environnement virtuel Python en exécutant la commande suivante:
 ```
 python -m venv env 
 ```
@@ -21,7 +25,7 @@ Puis, activez votre environnement virtuel avec la commande suivante:
 source env/bin/activate pour Mac / Linux
 env/Scripts/activate pour Windows
 ```
-3. Dans votre environnement virtuel, installez les packages Python nécessaires :
+4. Dans votre environnement virtuel, installez les packages Python nécessaires :
 ```
 pip install -r requirements.txt
 ```
@@ -30,15 +34,15 @@ Il n'est pas nécessaire de procéder aux migrations, mais si vous souhaitez rec
 ```		
 python manage.py migrate
 ```
-4. Vous pouvez maintenant exécuter l'application en local à l'aide de la commande suivante :
+5. Vous pouvez maintenant exécuter l'application en local à l'aide de la commande suivante :
 ```		
 python manage.py runserver
 ```
-5. L'application est prête, accédez-y à l'addresse suivante:
+6. L'application est prête, accédez-y à l'addresse suivante:
 ```
 http://127.0.0.1:8000/
 ```
-6. Dans la base de donnée communiquée, 4 comptes de démonstrations ont été créés avec quelques publications. Les noms d'utilisateurs sont les suivants :
+7. Dans la base de donnée communiquée, 4 comptes ont été créés avec quelques publications. Les noms d'utilisateurs sont les suivants :
 ```		
 antini (superuser)
 ```
