@@ -16,7 +16,7 @@ def model_type(value):
 @register.filter
 def get_posted_at_display(posted_at):
     """
-    Filter to change the way the time posted is showed 
+    Filter to change the way the time posted is showed
     """
     seconds_ago = (timezone.now() - posted_at).total_seconds()
     if seconds_ago <= HOUR:

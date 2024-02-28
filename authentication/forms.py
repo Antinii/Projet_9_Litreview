@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 class SignupForm(UserCreationForm):
     """
-    Formulaire d'inscription qui hérite de UserCreationForm
+    Form used for the signup, heriting from UserCreationForm
     """
 
     class Meta(UserCreationForm.Meta):

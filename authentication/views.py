@@ -16,7 +16,7 @@ def logout_user(request):
 
 def signup_page(request):
     """
-    Function working on the signup 
+    Function working on the signup
     """
 
     form = forms.SignupForm()

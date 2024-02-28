@@ -163,7 +163,7 @@ def create_ticket_and_review(request):
 @login_required
 def follow_user(request):
     """
-    Function to be able to follow an user 
+    Function to be able to follow an user
     """
     user = request.user
     following = request.user.following.all()
